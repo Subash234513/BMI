@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <style>
+            .bmiHead{
+                font-size: 50px;
+                font-family: arial;
+                display: flex;
+                justify-content: center;
+                margin-top: 70px;
+            
+            }
+            .bmiMiddle{
+                display: flex;
+                justify-content: center;
+                column-gap: 200px;
+                margin-top: 50px;
+            }
+            .bmiMiddle p{
+                font-family: arial;
+                margin: 0;
+                font-size: 30px;
+            }
+            .bmiMiddle input{
+                margin-top: 10px;
+                outline: none;
+                border-bottom: 1px solid black;
+                border-top:1px solid white;
+                border-left:1px solid white;
+                border-right:1px solid white;
+                width: 90px;
+                font-size: 20px;
+                color: green;
+            }
+            .calculate{
+                display: flex;
+                justify-content: center;
+                margin-top: 40px;   
+            }
+            .btncal{
+                background-color: red;
+                width: 390px;
+                height: 30px;
+                border: none;
+                font-size: 20px;
+                font-family: arial;
+                font-weight: 500;
+                cursor: pointer;
+            }
+            .bmiFooter{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                font-family: arial;
+               
+
+            }
+            .result{
+                font-size:30px;
+                color: green;
+            }
+            .hint{
+                font-size: 25px;
+                color: red;
+            }
+            .bmiFooter p{
+                margin: 0;
+                margin-top: 40px;
+            }
+            @media(max-width:500px){
+
+            }
+        </style>
+    </head>
+    <body>
+        <div class="bmiHead">BMI CALCULATOR</div>
+        <div class="bmiMiddle">
+            <div class="height">
+                <p>Height</p>
+                <input class="heightValue" type="text">
+            </div>
+            <div class="weight">
+                <p>Weight</p>
+                <input class="weightValue" type="text">
+            </div>
+        </div>
+        <div class="calculate">
+            <button class="btncal" onclick="calculate()">Calculate</button>
+        </div>
+        <div class="bmiFooter">
+            <p class="result"></p>
+            <p class="hint"></p>
+        </div>
+        <script>
+          
+            function calculate(){
+                const height=parseInt(document.querySelector('.heightValue').value);
+                const weightValue=parseInt(document.querySelector('.weightValue').value);
+                const resultOutput=document.querySelector('.result');
+                const hintOutput=document.querySelector('.hint');
+                const heightValue=height/100;
+                const result=weightValue/heightValue**2;
+                if(result<=18.5){
+                    resultOutput.innerHTML='Under Weight';
+                    hintOutput.innerHTML='Eat Organic Food and Gain Weight';
+                }
+                else if(result>18.5 && result<=24.9){
+                    resultOutput.innerHTML='Normal Weight';
+                    hintOutput.innerHTML='You are Perfectly Fit';
+                }
+                else if(result>25 && result<=29.9){
+                    resultOutput.innerHTML='Over Weight';
+                    hintOutput.innerHTML='Do the Calorie Deficit and Reduce your Weight';
+                }
+                else{
+                    resultOutput.innerHTML='Obesity';
+                    hintOutput.innerHTML='You Compulsory Need to Reduce Your Weight';
+                }
+            }
+         
+        </script>
+    </body>
+</html>
